@@ -1,5 +1,5 @@
 <script lang="ts">
-    let { items }: {items: tabItems[]} = $props();
+    let { items } = $props<{ items: tabItems[] }>();
 
     let activeTabValue: number = $state(1);
     const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);
