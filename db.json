@@ -1,3 +1,28 @@
 {
-    "todos": []
+  "todos": [
+    {
+      "todoBody": "asdasd",
+      "expireDate": "05/12/2024 - 01:33",
+      "priority": 1,
+      "status": 0,
+      "finishedAt": null,
+      "id": 1
+    },
+    {
+      "todoBody": "asd",
+      "expireDate": "05/12/2024 - 01:57",
+      "priority": 2,
+      "status": 0,
+      "finishedAt": null,
+      "id": 2
+    },
+    {
+      "todoBody": "asdasdasdasd",
+      "expireDate": "05/12/2024 - 06:11",
+      "priority": 0,
+      "status": 1,
+      "finishedAt": "05/12/2024 - 01:55",
+      "id": 3
+    }
+  ]
 }

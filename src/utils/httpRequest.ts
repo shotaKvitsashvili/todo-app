@@ -1,19 +1,31 @@
 // api.ts
-import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
+import axios, { type AxiosRequestConfig, type AxiosResponse, type Method } from 'axios';
+import { PUBLIC_API_BASEURL } from '$env/static/public';
 
 export interface ApiResponse<T> {
     data: T;
     error?: string;
 }
 
+const baseUrl = PUBLIC_API_BASEURL
+
 export async function httpRequest<T>(
-    config: AxiosRequestConfig
+    method: Method,
+    url: string,
+    data?: Record<string, any>
 ): Promise<ApiResponse<T>> {
     let response: AxiosResponse<T>;
     let error: string | undefined;
 
+    const conf: AxiosRequestConfig = {
+        method,
+        url: PUBLIC_API_BASEURL + url
+    }
+
+    if (data) conf.data = data
+
     try {
-        response = await axios.request<T>(config);
+        response = await axios.request<T>(conf);
 
         return {
             data: response.data,

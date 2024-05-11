@@ -26,7 +26,12 @@
 	"type": "module",
 	"dependencies": {
 		"@material-tailwind/html": "^2.2.2",
+		"@svelte-plugins/datepicker": "^1.0.9",
 		"axios": "^1.6.8",
-		"json-server": "^1.0.0-alpha.23"
+		"classnames": "^2.5.1",
+		"date-fns": "^3.6.0",
+		"json-server": "^0.17.4",
+		"svelte-forms-lib": "^2.0.1",
+		"yup": "^1.4.0"
 	}
 }

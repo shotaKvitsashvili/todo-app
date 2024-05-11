@@ -1,5 +1,9 @@
 <script lang="ts">
-    let { items } = $props<{ items: tabItems[] }>();
+    type Props = {
+        items: tabItems[];
+    };
+
+    let { items }: Props = $props();
 
     let activeTabValue: number = $state(1);
     const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);
@@ -13,7 +17,7 @@
     >
         {#each items as item}
             <li class="z-30 flex-auto text-center">
-                <div
+                <button
                     class="
                     flex
                     items-center
@@ -26,10 +30,10 @@
                     cursor-pointer
                     text-slate-700
                     {activeTabValue === item.value ? 'bg-gray-300' : ''}"
-                    on:click={handleClick(item.value)}
+                    onclick={handleClick(item.value)}
                 >
                     <span>{item.label}</span>
-                </div>
+                </button>
             </li>
         {/each}
     </ul>
