@@ -144,7 +144,7 @@ class="{
 
        {#if status !== todoStatusEnums.completed}
             <div class="[&_input]:!bg-transparent [&_input]:!text-gray-600 flex items-center gap-2 text-sm">
-                Expires at: 
+                {isExpired ? 'Expired' : 'Expires'} at: 
                 <Datepicker {updateField} defaultDate={expireDate} hideLabel />
             </div>
        {/if}
