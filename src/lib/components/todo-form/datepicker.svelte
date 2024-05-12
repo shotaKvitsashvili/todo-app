@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { DATE_FORMAT } from "$lib/constants/dateFormat";
     import { DatePicker } from "@svelte-plugins/datepicker";
     import { format, parse } from "date-fns";
 
@@ -8,7 +9,6 @@
         hideLabel?: boolean;
     };
 
-    const DATE_FORMAT = 'MM/dd/yyyy - HH:mm';
 
     const { updateField, defaultDate, hideLabel }: Props = $props();
 

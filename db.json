@@ -1,28 +1,52 @@
 {
   "todos": [
     {
-      "todoBody": "asdasd1",
-      "expireDate": "05/12/2024 - 01:33",
-      "priority": 1,
+      "todoBody": "Todo 1",
+      "expireDate": "23/05/2024 - 19:36",
+      "priority": 0,
       "status": 0,
       "finishedAt": null,
       "id": 1
     },
     {
-      "todoBody": "asd",
-      "expireDate": "05/12/2024 - 12:02",
-      "priority": 2,
+      "todoBody": "Todo 2",
+      "expireDate": "12/05/2024 - 19:35",
+      "priority": 0,
       "status": 0,
       "finishedAt": null,
       "id": 2
     },
     {
-      "todoBody": "asdasdasdasd",
-      "expireDate": "05/12/2024 - 06:11",
+      "todoBody": "Another todo",
+      "expireDate": "15/05/2024 - 20:25",
+      "priority": 2,
+      "status": 0,
+      "finishedAt": null,
+      "id": 4
+    },
+    {
+      "todoBody": "Todo",
+      "expireDate": "16/05/2024 - 21:08",
       "priority": 0,
       "status": 1,
-      "finishedAt": "05/12/2024 - 02:07",
-      "id": 3
+      "finishedAt": "12/05/2024 - 21:25",
+      "id": 5
+    },
+    {
+      "todoBody": "New todo",
+      "expireDate": "15/05/2024 - 21:33",
+      "priority": 1,
+      "status": 0,
+      "finishedAt": null,
+      "id": 6
+    },
+    {
+      "todoBody": "For search",
+      "expireDate": "22/08/2024 - 22:32",
+      "priority": 0,
+      "status": 0,
+      "finishedAt": null,
+      "id": 7
     }
   ]
 }

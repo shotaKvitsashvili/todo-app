@@ -7,6 +7,7 @@
     import { type ApiResponse, httpRequest } from "../../../utils/httpRequest";
     import { todoPriorityEnums, todoStatusEnums } from "$lib/enums/todoEnums";
     import Datepicker from "./datepicker.svelte";
+    import { todosEndpoint } from "$lib/constants/endpoints";
 
     let created: boolean = $state(false);
     
@@ -27,7 +28,7 @@
         onSubmit: async (values: TAddTodo) => {
             try {
                 const response: ApiResponse<TAddTodo> =
-                    await httpRequest<TAddTodo>("POST", "/todos", {
+                    await httpRequest<TAddTodo>("POST", todosEndpoint, {
                         ...values,
                         priority: Number(values.priority),
                         status: todoStatusEnums.ongoing,

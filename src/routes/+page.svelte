@@ -11,6 +11,9 @@
     ];
 </script>
 
+<svelte:head>
+    <title>Todos</title>
+</svelte:head>
 <div class="container">
     <div class="lg:max-w-[800px] mx-auto mt-14 p-3 lg:px-10">
         <Tabs items={items} />

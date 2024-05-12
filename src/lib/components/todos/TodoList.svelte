@@ -1,36 +1,55 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { onDestroy, onMount } from "svelte";
 
-    import { httpRequest, type ApiResponse } from "../../../utils/httpRequest";
     import loaderGif from "$lib/images/loading.gif";
     import TodoCard from "./TodoCard.svelte";
+    import { todoStore } from "../../../store/todoStore";
+    import { page } from "$app/stores";
+    import { goto } from "$app/navigation";
+    import Input from "../ui/input.svelte";
 
-    let data: TTodoResponse[] = $state([]);
-    let error: string = $state("");
-    let loading: boolean = $state(false);
-    let todosAreEmpty: boolean = $state(false);
+    let queryParams: URLSearchParams = $page.url.searchParams;
+    let searchKey = queryParams.get("q");
 
-    const getTodo = async () => {
-        try {
-            loading = true;
-            const response: ApiResponse<TTodoResponse[]> =
-                await httpRequest<any>("GET", "/todos?_sort=priority");
-            loading = false;
+    let timerId: any;
 
-            if (response.error) {
-                error = response.error;
-            } else {
-                data = response.data;
-                todosAreEmpty = response.data.length < 1;
+    const { subscribe, getTodo } = todoStore;
+    let { data, error, loading, todosAreEmpty } = $todoStore;
+
+    const unsubscribe = subscribe((value) => {
+        data = value.data;
+        error = value.error;
+        loading = value.loading;
+        todosAreEmpty = value.todosAreEmpty;
+    });
+
+    const handleChange = (e: Event) => {
+        const isAlphaNumeric = e instanceof KeyboardEvent && (e.key.length === 1 || e.key === "Backspace" || e.key === "Delete")
+        
+        if (typeof window !== "undefined" && isAlphaNumeric) {
+            const { value } = e.target as HTMLInputElement;
+            queryParams.set("q", value);
+
+            if (timerId) {
+                clearTimeout(timerId);
             }
-        } catch (error) {
-            error = "Error occured";
+
+            timerId = setTimeout(() => {
+                getTodo("todoBody_like=" + value);
+                goto(`?${queryParams.toString()}`, {
+                    keepFocus: true,
+                    replaceState: true,
+                });
+                timerId = null;
+            }, 200);
         }
     };
 
     onMount(() => {
-        getTodo();
+        getTodo(searchKey ? "todoBody_like=" + searchKey : undefined);
     });
+
+    onDestroy(unsubscribe);
 </script>
 
 <div class="flex flex-col gap-2">
@@ -39,6 +58,8 @@
             {error}
         </span>
     {/if}
+
+    <Input {handleChange} value={searchKey ?? ""} type="text" name="searchKey" placeholder="Search todo..." />
 
     {#if loading}
         <img src={loaderGif} alt="loader" class="w-28 h-28 mx-auto" />

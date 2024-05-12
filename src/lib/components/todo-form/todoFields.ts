@@ -2,7 +2,7 @@ import { todoPriorityEnums } from "$lib/enums/todoEnums"
 
 type TTodoFields = {
     name: string
-    type: 'text' | 'radio'
+    type: 'text' | 'radio' | 'textarea'
     label?: string
     placeholder?: string;
     value?: any
@@ -12,7 +12,7 @@ type TTodoFields = {
 export const todoFields: TTodoFields[] = [
     {
         name: 'todoBody',
-        type: 'text',
+        type: 'textarea',
         placeholder: 'Write todo...',
         label: 'Todo'
     },

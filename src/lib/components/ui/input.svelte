@@ -3,7 +3,7 @@
 
     type Props = {
         handleChange: (event: Event) => any;
-        errors: Writable<Record<string, string>>;
+        errors?: Writable<Record<string, string>>;
         type: "text" | "radio" | "textarea" | "checkbox";
         name: string;
         label?: string;
@@ -44,17 +44,16 @@
                 readonly={readOnly}
             />
 
-            {#if $errors[name]}
+            {#if $errors && $errors[name]}
                 <small class="text-red-800">{$errors[name]}</small>
             {/if}
         </div>
     </div>
 {:else if type === "radio"}
-    <div class="inline-flex items-center gap-1">
-        <label
-            class="relative flex items-center rounded-full cursor-pointer"
-            for="radio-bnt-{value}"
-        >
+    <label
+        class="relative flex items-center rounded-full cursor-pointer gap-1"
+    >
+        <div class="flex items-center relative">
             <input
                 {name}
                 {value}
@@ -76,14 +75,14 @@
                     <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
                 </svg>
             </span>
-        </label>
-        <label
+        </div>
+
+        <div
             class="mt-px font-light text-gray-700 cursor-pointer select-none text-sm"
-            for="radio-bnt-{value}"
         >
             {label}
-        </label>
-    </div>
+        </div>
+    </label>
 {:else if type === "textarea"}
     <div class="w-full">
         <h6
@@ -101,11 +100,11 @@
                 readonly={readOnly}
             ></textarea>
 
-            {#if $errors[name]}
+            {#if $errors && $errors[name]}
                 <small class="text-red-800">{$errors[name]}</small>
             {/if}
         </div>
-    </div>   
+    </div>
 {/if}
 
 <style scoped>
