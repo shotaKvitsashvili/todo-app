@@ -8,8 +8,8 @@
     import { goto } from "$app/navigation";
     import Input from "../ui/input.svelte";
 
-    let queryParams: URLSearchParams = $page.url.searchParams;
-    let searchKey = queryParams.get("q");
+    let queryParams: URLSearchParams;
+    let searchKey: string;
 
     let timerId: any;
 
@@ -46,6 +46,8 @@
     };
 
     onMount(() => {
+        queryParams = $page.url.searchParams;
+        searchKey = queryParams.get("q") ?? ''
         getTodo(searchKey ? "todoBody_like=" + searchKey : undefined);
     });
 

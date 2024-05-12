@@ -33,17 +33,9 @@
       "id": 5
     },
     {
-      "todoBody": "New todo",
-      "expireDate": "15/05/2024 - 21:33",
-      "priority": 1,
-      "status": 0,
-      "finishedAt": null,
-      "id": 6
-    },
-    {
       "todoBody": "For search",
       "expireDate": "22/08/2024 - 22:32",
-      "priority": 0,
+      "priority": 1,
       "status": 0,
       "finishedAt": null,
       "id": 7
